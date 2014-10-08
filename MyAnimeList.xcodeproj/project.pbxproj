@@ -1,0 +1,467 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		82E89ADD19E590FF00E99830 /* MyAnimeList.h in Headers */ = {isa = PBXBuildFile; fileRef = 82E89ADC19E590FF00E99830 /* MyAnimeList.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		82E89AE319E590FF00E99830 /* MyAnimeList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E89AD719E590FF00E99830 /* MyAnimeList.framework */; };
+		82E89AEA19E590FF00E99830 /* MyAnimeListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E89AE919E590FF00E99830 /* MyAnimeListTests.m */; };
+		82E89AFF19E591D200E99830 /* base64.c in Sources */ = {isa = PBXBuildFile; fileRef = 82E89AFB19E591D200E99830 /* base64.c */; };
+		82E89B0019E591D200E99830 /* base64.h in Headers */ = {isa = PBXBuildFile; fileRef = 82E89AFC19E591D200E99830 /* base64.h */; };
+		82E89B0119E591D200E99830 /* Base64Category.h in Headers */ = {isa = PBXBuildFile; fileRef = 82E89AFD19E591D200E99830 /* Base64Category.h */; };
+		82E89B0219E591D200E99830 /* Base64Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E89AFE19E591D200E99830 /* Base64Category.m */; };
+		82E89B0419E592B200E99830 /* MyAnimeList.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E89B0319E592B200E99830 /* MyAnimeList.m */; };
+		82E89B0619E5952300E99830 /* OgreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E89B0519E5952300E99830 /* OgreKit.framework */; };
+		82E89B0819E5988700E99830 /* SBJson.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E89B0719E5988700E99830 /* SBJson.framework */; };
+		82E89B0A19E598A600E99830 /* SBJson.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 82E89B0719E5988700E99830 /* SBJson.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		82E89B0B19E598A800E99830 /* OgreKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 82E89B0519E5952300E99830 /* OgreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		82E89AE419E590FF00E99830 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 82E89ACE19E590FF00E99830 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 82E89AD619E590FF00E99830;
+			remoteInfo = MyAnimeList;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		82E89B0919E5989F00E99830 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				82E89B0A19E598A600E99830 /* SBJson.framework in CopyFiles */,
+				82E89B0B19E598A800E99830 /* OgreKit.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		82E89AD719E590FF00E99830 /* MyAnimeList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyAnimeList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		82E89ADB19E590FF00E99830 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		82E89ADC19E590FF00E99830 /* MyAnimeList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyAnimeList.h; sourceTree = "<group>"; };
+		82E89AE219E590FF00E99830 /* MyAnimeListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyAnimeListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		82E89AE819E590FF00E99830 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		82E89AE919E590FF00E99830 /* MyAnimeListTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyAnimeListTests.m; sourceTree = "<group>"; };
+		82E89AFB19E591D200E99830 /* base64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = base64.c; sourceTree = "<group>"; };
+		82E89AFC19E591D200E99830 /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
+		82E89AFD19E591D200E99830 /* Base64Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Category.h; sourceTree = "<group>"; };
+		82E89AFE19E591D200E99830 /* Base64Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64Category.m; sourceTree = "<group>"; };
+		82E89B0319E592B200E99830 /* MyAnimeList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAnimeList.m; sourceTree = "<group>"; };
+		82E89B0519E5952300E99830 /* OgreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OgreKit.framework; path = MyAnimeList/OgreKit.framework; sourceTree = SOURCE_ROOT; };
+		82E89B0719E5988700E99830 /* SBJson.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SBJson.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		82E89AD319E590FF00E99830 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82E89B0619E5952300E99830 /* OgreKit.framework in Frameworks */,
+				82E89B0819E5988700E99830 /* SBJson.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		82E89ADF19E590FF00E99830 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82E89AE319E590FF00E99830 /* MyAnimeList.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		82E89ACD19E590FF00E99830 = {
+			isa = PBXGroup;
+			children = (
+				82E89AD919E590FF00E99830 /* MyAnimeList */,
+				82E89AE619E590FF00E99830 /* MyAnimeListTests */,
+				82E89AD819E590FF00E99830 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		82E89AD819E590FF00E99830 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				82E89AD719E590FF00E99830 /* MyAnimeList.framework */,
+				82E89AE219E590FF00E99830 /* MyAnimeListTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		82E89AD919E590FF00E99830 /* MyAnimeList */ = {
+			isa = PBXGroup;
+			children = (
+				82E89ADC19E590FF00E99830 /* MyAnimeList.h */,
+				82E89B0319E592B200E99830 /* MyAnimeList.m */,
+				82E89AFB19E591D200E99830 /* base64.c */,
+				82E89AFC19E591D200E99830 /* base64.h */,
+				82E89AFD19E591D200E99830 /* Base64Category.h */,
+				82E89AFE19E591D200E99830 /* Base64Category.m */,
+				82E89ADA19E590FF00E99830 /* Supporting Files */,
+			);
+			path = MyAnimeList;
+			sourceTree = "<group>";
+		};
+		82E89ADA19E590FF00E99830 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				82E89B0719E5988700E99830 /* SBJson.framework */,
+				82E89B0519E5952300E99830 /* OgreKit.framework */,
+				82E89ADB19E590FF00E99830 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		82E89AE619E590FF00E99830 /* MyAnimeListTests */ = {
+			isa = PBXGroup;
+			children = (
+				82E89AE919E590FF00E99830 /* MyAnimeListTests.m */,
+				82E89AE719E590FF00E99830 /* Supporting Files */,
+			);
+			path = MyAnimeListTests;
+			sourceTree = "<group>";
+		};
+		82E89AE719E590FF00E99830 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				82E89AE819E590FF00E99830 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		82E89AD419E590FF00E99830 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82E89ADD19E590FF00E99830 /* MyAnimeList.h in Headers */,
+				82E89B0019E591D200E99830 /* base64.h in Headers */,
+				82E89B0119E591D200E99830 /* Base64Category.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		82E89AD619E590FF00E99830 /* MyAnimeList */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 82E89AED19E590FF00E99830 /* Build configuration list for PBXNativeTarget "MyAnimeList" */;
+			buildPhases = (
+				82E89AD219E590FF00E99830 /* Sources */,
+				82E89AD319E590FF00E99830 /* Frameworks */,
+				82E89AD419E590FF00E99830 /* Headers */,
+				82E89AD519E590FF00E99830 /* Resources */,
+				82E89B0919E5989F00E99830 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MyAnimeList;
+			productName = MyAnimeList;
+			productReference = 82E89AD719E590FF00E99830 /* MyAnimeList.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		82E89AE119E590FF00E99830 /* MyAnimeListTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 82E89AF019E590FF00E99830 /* Build configuration list for PBXNativeTarget "MyAnimeListTests" */;
+			buildPhases = (
+				82E89ADE19E590FF00E99830 /* Sources */,
+				82E89ADF19E590FF00E99830 /* Frameworks */,
+				82E89AE019E590FF00E99830 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				82E89AE519E590FF00E99830 /* PBXTargetDependency */,
+			);
+			name = MyAnimeListTests;
+			productName = MyAnimeListTests;
+			productReference = 82E89AE219E590FF00E99830 /* MyAnimeListTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		82E89ACE19E590FF00E99830 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Chikorita157's Anime Blog";
+				TargetAttributes = {
+					82E89AD619E590FF00E99830 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					82E89AE119E590FF00E99830 = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = 82E89AD619E590FF00E99830;
+					};
+				};
+			};
+			buildConfigurationList = 82E89AD119E590FF00E99830 /* Build configuration list for PBXProject "MyAnimeList" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 82E89ACD19E590FF00E99830;
+			productRefGroup = 82E89AD819E590FF00E99830 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				82E89AD619E590FF00E99830 /* MyAnimeList */,
+				82E89AE119E590FF00E99830 /* MyAnimeListTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		82E89AD519E590FF00E99830 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		82E89AE019E590FF00E99830 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		82E89AD219E590FF00E99830 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82E89B0419E592B200E99830 /* MyAnimeList.m in Sources */,
+				82E89B0219E591D200E99830 /* Base64Category.m in Sources */,
+				82E89AFF19E591D200E99830 /* base64.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		82E89ADE19E590FF00E99830 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82E89AEA19E590FF00E99830 /* MyAnimeListTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		82E89AE519E590FF00E99830 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 82E89AD619E590FF00E99830 /* MyAnimeList */;
+			targetProxy = 82E89AE419E590FF00E99830 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		82E89AEB19E590FF00E99830 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		82E89AEC19E590FF00E99830 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		82E89AEE19E590FF00E99830 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MyAnimeList",
+				);
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = MyAnimeList/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		82E89AEF19E590FF00E99830 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MyAnimeList",
+				);
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = MyAnimeList/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		82E89AF119E590FF00E99830 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MyAnimeListTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		82E89AF219E590FF00E99830 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MyAnimeListTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		82E89AD119E590FF00E99830 /* Build configuration list for PBXProject "MyAnimeList" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				82E89AEB19E590FF00E99830 /* Debug */,
+				82E89AEC19E590FF00E99830 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		82E89AED19E590FF00E99830 /* Build configuration list for PBXNativeTarget "MyAnimeList" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				82E89AEE19E590FF00E99830 /* Debug */,
+				82E89AEF19E590FF00E99830 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		82E89AF019E590FF00E99830 /* Build configuration list for PBXNativeTarget "MyAnimeListTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				82E89AF119E590FF00E99830 /* Debug */,
+				82E89AF219E590FF00E99830 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 82E89ACE19E590FF00E99830 /* Project object */;
+}

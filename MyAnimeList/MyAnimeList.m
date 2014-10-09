@@ -295,8 +295,8 @@
 }
 -(NSString *)findaniid:(NSString *)ResponseData {
 	// Initalize JSON parser
-	SBJson4Parser *parser = [[SBJson4Parser alloc] init];
-	NSArray *searchdata = [parser objectWithString:ResponseData error:nil];
+	SBJsonParser *parser = [[SBJsonParser alloc] init];
+    NSArray *searchdata = [parser objectWithString:ResponseData];/*[parser objectWithString:ResponseData error:nil]*/;
 	NSString *titleid = @"";
 	//Initalize NSString to dump the title temporarily
 	NSString *theshowtitle = @"";
@@ -336,7 +336,8 @@ foundtitle:
 	NSString *response = [request responseString];
 	if (statusCode == 200 ) {
 		// Initalize JSON parser
-		NSDictionary *animeinfo = [response JSONValue];
+        SBJsonParser *parser = [[SBJsonParser alloc] init];
+        NSDictionary *animeinfo = [parser objectWithString:response];
 		if ([animeinfo objectForKey:@"episodes"] == [NSNull null]) { // To prevent the scrobbler from failing because there is no episode total.
 			TotalEpisodes = @"0"; // No Episode Total, Set to 0.
 		}
@@ -362,16 +363,13 @@ foundtitle:
 			}
 			NSLog(@"Title Score %@", TitleScore);
 		}
-		// Makes sure the values don't get released
-		[TotalEpisodes retain];
-		[DetectedCurrentEpisode retain];
 		return YES;
 	}
 	else {
 		// Some Error. Abort
 		//Set up Delegate
-		MAL_Updater_OS_XAppDelegate* appDelegate=[NSApp delegate];
-		[appDelegate setStatusText:@"Scrobble Status: Scrobble Failed. Retrying in 5 mins..."];
+		/*MAL_Updater_OS_XAppDelegate* appDelegate=[NSApp delegate];
+		[appDelegate setStatusText:@"Scrobble Status: Scrobble Failed. Retrying in 5 mins..."];*/
 		return NO;
 	}
 	//Should never happen, but...
@@ -380,11 +378,10 @@ foundtitle:
 -(BOOL)updatetitle:(NSString *)titleid {
 	NSLog(@"Updating Title");
 	//Set up Delegate
-	MAL_Updater_OS_XAppDelegate* appDelegate=[NSApp delegate];
 	if ([DetectedEpisode intValue] <= [DetectedCurrentEpisode intValue] ) { 
 		// Already Watched, no need to scrobble
-		[appDelegate setStatusText:@"Scrobble Status: Same Episode Playing, Scrobble not needed."];
-		[appDelegate setLastScrobbledTitle:[NSString stringWithFormat:@"Last Scrobbled: %@ - %@",DetectedTitle,DetectedEpisode]];
+		/*[appDelegate setStatusText:@"Scrobble Status: Same Episode Playing, Scrobble not needed."];
+		[appDelegate setLastScrobbledTitle:[NSString stringWithFormat:@"Last Scrobbled: %@ - %@",DetectedTitle,DetectedEpisode]];*/
         // Store Scrobbled Title and Episode
 		LastScrobbledTitle = DetectedTitle;
 		LastScrobbledEpisode = DetectedEpisode;

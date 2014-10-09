@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import <Cocoa/Cocoa.h>
 #import <OgreKit/OgreKit.h>
-#import <SBJson/SBJson4.h>
+#import <SBJson/SBJson.h>
 
 //! Project version number for MyAnimeList.
 FOUNDATION_EXPORT double MyAnimeListVersionNumber;

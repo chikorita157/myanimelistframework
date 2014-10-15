@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/chikorita157/myanimelistframework.svg?branch=master)](https://travis-ci.org/chikorita157/myanimelistframework)
+
 #What is This?#
  
 I plan on rewriting the frontend of MAL Updater OS X in the future to work on later OS X systems while adding some new features. Apparently, someone is continuing development of the Unofficial MAL API, but it's not currently up yet. Since the code is old, I plan on throwing it out, but put the main functionality in this framework for retrieving lists, updating and detecting playing files.

@@ -10,6 +10,7 @@
 #import <Cocoa/Cocoa.h>
 #import <OgreKit/OgreKit.h>
 #import <SBJson/SBJson.h>
+#import <LRResty/LRResty.h>
 
 //! Project version number for MyAnimeList.
 FOUNDATION_EXPORT double MyAnimeListVersionNumber;
@@ -23,8 +24,6 @@ FOUNDATION_EXPORT const unsigned char MyAnimeListVersionString[];
     NSString * MALApiUrl;
     NSString * LastScrobbledTitle;
     NSString * LastScrobbledEpisode;
-    NSString * DetectedTitle;
-    NSString * DetectedEpisode;
     NSString * DetectedCurrentEpisode;
     NSString * TotalEpisodes;
     NSString * WatchStatus;
@@ -38,10 +37,10 @@ FOUNDATION_EXPORT const unsigned char MyAnimeListVersionString[];
     int videoplayer;
 }
 -(id)initWithuMALAPIURL:(NSString *)URL;
--(void)startscrobbling;
--(BOOL)detectmedia;
--(NSString *)searchanime;
--(NSString *)findaniid:(NSString *)ResponseData;
+-(int)scrobble;
+-(NSDictionary *)detectmedia;
+-(NSArray *)searchanime:(NSString *)title;
+-(NSString *)findaniid:(NSArray *)searchdata;
 -(BOOL)checkstatus:(NSString *)titleid;
 -(BOOL)updatetitle:(NSString *)titleid;
 -(BOOL)addtitle:(NSString *)titleid;
@@ -55,6 +54,10 @@ FOUNDATION_EXPORT const unsigned char MyAnimeListVersionString[];
 -(NSString *)getTotalEpisodes;
 -(int)getScore;
 -(int)getWatchStatus;
+-(void) changeuMALAPIURL:(NSString *)URL;
+-(void) setAuthToken:(NSString *)token;
+-(int) verifyCredentials:(NSString *)username
+                password:(NSString *)password;
 @end
 
 

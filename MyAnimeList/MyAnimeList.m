@@ -65,13 +65,17 @@
  
  */
 
-- (void)startscrobbling {
+- (int)scrobble {
+    // 0 - New Tite; 1 = Update Title; 2 - No Update; 3 = Failure
+    // Empty out Detected Title/Episode to prevent same title detection
+    DetectedTitle = @"";
+    DetectedEpisode = @"";
 	//Set up Delegate
 	//MAL_Updater_OS_XAppDelegate* appDelegate=[NSApp delegate];
 	if ([self detectmedia] == 1) { // Detects Title
 		//[appDelegate setStatusText:@"Scrobble Status: Scrobbling..."];
 		NSLog(@"Getting AniID");
-		AniID = [self searchanime];
+        AniID = [self findaniid:[self searchanime:DetectedTitle]];
 		if (AniID.length > 0) {
             NSLog(@"Found %@", AniID);
 			// Check Status and Update
@@ -80,13 +84,16 @@
 			if ([WatchStatus isEqualToString:@"Nothing"]) {
 				//Title is not on list. Add Title
 				Success = [self addtitle:AniID];
+                return 0;
 			}
 			else {
 				// Update Title as Usual
 				Success = [self updatetitle:AniID];
+                return 1;
 			}
 				//Set last successful scrobble to statusItem Tooltip
 				//[appDelegate setStatusToolTip:[NSString stringWithFormat:@"MAL Updater OS X - Last Scrobble: %@ - %@", LastScrobbledTitle, LastScrobbledEpisode]];
+                return 2;
 			}
 		}
 		else {
@@ -99,34 +106,33 @@
 										   priority:0
 										   isSticky:NO
 									   clickContext:[NSDate date]];*/
+            return 3;
 		}
-		// Empty out Detected Title/Episode to prevent same title detection
-		DetectedTitle = @"";
-		DetectedEpisode = @"";
+        return 3;
     }
-
-
+return 3;
 }
--(NSString *)searchanime{
+-(NSArray *)searchanime:(NSString *)title{
 	NSLog(@"Searching For Title");
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	//NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	//Escape Search Term
 	NSString * searchterm = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(
 																				NULL,
-																				(CFStringRef)DetectedTitle,
+																				(CFStringRef)title,
 																				NULL,
 																				(CFStringRef)@"!*'();:@&=+$,/?%#[]",
 																				kCFStringEncodingUTF8 ));
-	MALApiUrl = [defaults objectForKey:@"MALAPIURL"];
+	//MALApiUrl = [defaults objectForKey:@"MALAPIURL"]; #to be removed
 
 	//Set Search API
 	NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/anime/search?q=%@",MALApiUrl, searchterm]];
-	//Release searchterm
-	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
 	//Ignore Cookies
 	[request setUseCookiePersistence:NO];
 	//Set Token
-	[request addRequestHeader:@"Authorization" value:[NSString stringWithFormat:@"Basic %@",[defaults objectForKey:@"Base64Token"]]];
+    NSDictionary *requestHeaders = [NSDictionary
+                                    dictionaryWithObject:[NSString stringWithFormat:@"Basic %@",Base64Token] forKey:@"Authorization"];
 	//Perform Search
 	[request startSynchronous];
 	//Set up Delegate
@@ -134,9 +140,14 @@
 	// Get Status Code
 	int statusCode = [request responseStatusCode];
 			NSString *response = [request responseString];
+    NSArray *searchdata;
 	switch (statusCode) {
 		case 200:
-			return [self findaniid:response];
+            // Initalize JSON parser
+            SBJsonParser *parser = [[SBJsonParser alloc] init];
+            searchdata = [parser objectWithString:response];/*[parser objectWithString:ResponseData error:nil]*/;
+			//Return Search Results as an array
+			return searchdata;//[self findaniid:response];
 			break;
 			
 		case 0:
@@ -149,7 +160,7 @@
 										   priority:0
 										   isSticky:NO
 									   clickContext:[NSDate date]];*/
-			return @"";
+			return searchdata;
 			break;
 
 		case 500:
@@ -163,7 +174,7 @@
 										   priority:0
 										   isSticky:NO
 									   clickContext:[NSDate date]];*/
-			return @"";
+			return searchdata;
 			break;
 			
 		default:
@@ -176,12 +187,12 @@
 										   priority:0
 										   isSticky:NO
 									   clickContext:[NSDate date]];*/
-			return @"";
+			return searchdata;
 			break;
 	}
 	
 }
--(BOOL)detectmedia {
+-(NSDictionary *)detectmedia {
 	//Set up Delegate
 	//MAL_Updater_OS_XAppDelegate* appDelegate=[NSApp delegate];
 	// LSOF mplayer to get the media title and segment
@@ -234,6 +245,8 @@
 		while ((match = [enumerator nextObject]) != nil) {
 			string = [match matchedString];
 		}
+        NSString * DetectedEpisode;
+        NSString * DetectedTitle;
 		//Accented e temporary fix
 		regex = [OGRegularExpression regularExpressionWithString:@"e\\\\xcc\\\\x81"];
 		string = [regex replaceAllMatchesInString:string
@@ -269,34 +282,36 @@
 		DetectedEpisode = [regex replaceAllMatchesInString:string
 												withString:@""];
 		// Trim Whitespace
+
 		DetectedTitle = [DetectedTitle stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 		DetectedEpisode = [DetectedEpisode stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 		//release
 		regex = nil;
 		enumerator = nil;
 		string = @"";
+        //Create Dictionary
+        NSMutableDictionary *resultdic = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"DetectedTitle", DetectedTitle, @"DetectedEpisode",DetectedEpisode, @"DetectSuccess", [NSNumber numberWithBool:NO], nil];
 		// Check if the title was previously scrobbled
 		if ([DetectedTitle isEqualToString:LastScrobbledTitle] && [DetectedEpisode isEqualToString: LastScrobbledEpisode] && Success == 1) {
 			// Do Nothing
 			/*[appDelegate setStatusText:@"Scrobble Status: Same Episode Playing, Scrobble not needed."];
 			[appDelegate setLastScrobbledTitle:[NSString stringWithFormat:@"Last Scrobbled: %@ - %@",DetectedTitle,DetectedEpisode]];*/
-			return NO;
-		}
+            [resultdic setObject:[NSNumber numberWithBool:YES] forKey:@"DetectSuccess"];
+             }
 		else {
-			// Not Scrobbled Yet or Unsuccessful
-            return YES;
+            // Not Scrobbled Yet or Unsuccessful
+            [resultdic setObject:[NSNumber numberWithBool:NO] forKey:@"DetectSuccess"];
+
 		}
+        return resultdic;
 	}
 	else {
 		// Nothing detected
 		//[appDelegate setStatusText:@"Scrobble Status: Idle..."];
-		return NO;
+
 	}
 }
--(NSString *)findaniid:(NSString *)ResponseData {
-	// Initalize JSON parser
-	SBJsonParser *parser = [[SBJsonParser alloc] init];
-    NSArray *searchdata = [parser objectWithString:ResponseData];/*[parser objectWithString:ResponseData error:nil]*/;
+-(NSString *)findaniid:(NSArray *)searchdata {
 	NSString *titleid = @"";
 	//Initalize NSString to dump the title temporarily
 	NSString *theshowtitle = @"";
@@ -328,7 +343,8 @@ foundtitle:
 	//Ignore Cookies
 	[request setUseCookiePersistence:NO];
 	//Set Token
-	[request addRequestHeader:@"Authorization" value:[NSString stringWithFormat:@"Basic %@",[defaults objectForKey:@"Base64Token"]]];
+	NSDictionary *requestHeaders = [NSDictionary
+                                    dictionaryWithObject:[NSString stringWithFormat:@"Basic %@",Base64Token] forKey:@"Authorization"];
 	//Perform Search
 	[request startSynchronous];
 	// Get Status Code
@@ -396,7 +412,8 @@ foundtitle:
 		//Ignore Cookies
 		[request setUseCookiePersistence:NO];
 		//Set Token
-		[request addRequestHeader:@"Authorization" value:[NSString stringWithFormat:@"Basic %@",[defaults objectForKey:@"Base64Token"]]];
+		NSDictionary *requestHeaders = [NSDictionary
+                                    dictionaryWithObject:[NSString stringWithFormat:@"Basic %@",Base64Token] forKey:@"Authorization"];
 	    [request setPostValue:@"PUT" forKey:@"_method"];
 	    [request setPostValue:DetectedEpisode forKey:@"episodes"];
 		//Set Status
@@ -465,7 +482,8 @@ foundtitle:
 	//Ignore Cookies
 	[request setUseCookiePersistence:NO];
 	//Set Token
-	[request addRequestHeader:@"Authorization" value:[NSString stringWithFormat:@"Basic %@",[defaults objectForKey:@"Base64Token"]]];
+	NSDictionary *requestHeaders = [NSDictionary
+                                    dictionaryWithObject:[NSString stringWithFormat:@"Basic %@",Base64Token] forKey:@"Authorization"];
 	[request setPostValue:titleid forKey:@"anime_id"];
 	[request setPostValue:DetectedEpisode forKey:@"episodes"];
 	[request setPostValue:@"watching" forKey:@"status"];	
@@ -483,7 +501,7 @@ foundtitle:
 	switch ([request responseStatusCode]) {
 		case 200:
 			// Update Successful
-			[appDelegate setStatusText:@"Scrobble Status: Title Added..."];
+			/*[appDelegate setStatusText:@"Scrobble Status: Title Added..."];
 			[appDelegate setLastScrobbledTitle:[NSString stringWithFormat:@"Last Scrobbled: %@ - %@",DetectedTitle,DetectedEpisode]];
 			[GrowlApplicationBridge notifyWithTitle:@"Adding of Title Successful."
 										description:[NSString stringWithFormat:@"%@ - %@",DetectedTitle,DetectedEpisode]
@@ -491,12 +509,7 @@ foundtitle:
 										   iconData:nil
 										   priority:0
 										   isSticky:NO
-									   clickContext:[NSDate date]];
-			//Twitter
-			NSString * TwitMessage = [NSString stringWithFormat:@"%@ %@ - %@/%@", TitleState, LastScrobbledTitle, LastScrobbledEpisode, TotalEpisodes];
-			if ([defaults boolForKey:@"IncludeSeriesURL"] == 1) {
-				TwitMessage = [NSString stringWithFormat:@"%@ - http://myanimelist.net/anime/%@",TwitMessage, titleid]; 
-			}
+									   clickContext:[NSDate date]];*/
 			//Add History Record
 			/*[appDelegate addrecord:DetectedTitle Episode:DetectedEpisode Date:[NSDate date]];*/
 			return YES;
@@ -530,7 +543,8 @@ foundtitle:
 	//Ignore Cookies
 	[request setUseCookiePersistence:NO];
 	//Set Token
-	[request addRequestHeader:@"Authorization" value:[NSString stringWithFormat:@"Basic %@",[defaults objectForKey:@"Base64Token"]]];
+	NSDictionary *requestHeaders = [NSDictionary
+                                    dictionaryWithObject:[NSString stringWithFormat:@"Basic %@",Base64Token] forKey:@"Authorization"];
 	[request setPostValue:@"PUT" forKey:@"_method"];
 	//Set current episode
 	[request setPostValue:LastScrobbledEpisode forKey:@"episodes"];
@@ -565,5 +579,12 @@ foundtitle:
 }
 -(void) changeuMALAPIURL:(NSString *)URL{
     MALApiUrl = [NSString stringWithFormat:@"%@", URL];
+}
+-(void) setAuthToken:(NSString *)token{
+    
+}
+-(int) verifyCredentials:(NSString *)username
+                password:(NSString *)password{
+    
 }
 @end

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		827A0F6219E6DBC000598E94 /* LRResty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 827A0F6119E6DBC000598E94 /* LRResty.framework */; };
+		827A0F6319E6DBD800598E94 /* LRResty.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 827A0F6119E6DBC000598E94 /* LRResty.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		82E89ADD19E590FF00E99830 /* MyAnimeList.h in Headers */ = {isa = PBXBuildFile; fileRef = 82E89ADC19E590FF00E99830 /* MyAnimeList.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		82E89AE319E590FF00E99830 /* MyAnimeList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E89AD719E590FF00E99830 /* MyAnimeList.framework */; };
 		82E89AEA19E590FF00E99830 /* MyAnimeListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E89AE919E590FF00E99830 /* MyAnimeListTests.m */; };
@@ -38,6 +40,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				827A0F6319E6DBD800598E94 /* LRResty.framework in CopyFiles */,
 				82E89B0A19E598A600E99830 /* SBJson.framework in CopyFiles */,
 				82E89B0B19E598A800E99830 /* OgreKit.framework in CopyFiles */,
 			);
@@ -46,6 +49,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		827A0F6119E6DBC000598E94 /* LRResty.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LRResty.framework; sourceTree = "<group>"; };
 		82E89AD719E590FF00E99830 /* MyAnimeList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyAnimeList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		82E89ADB19E590FF00E99830 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82E89ADC19E590FF00E99830 /* MyAnimeList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyAnimeList.h; sourceTree = "<group>"; };
@@ -67,6 +71,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				82E89B0619E5952300E99830 /* OgreKit.framework in Frameworks */,
+				827A0F6219E6DBC000598E94 /* LRResty.framework in Frameworks */,
 				82E89B0819E5988700E99830 /* SBJson.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -117,6 +122,7 @@
 		82E89ADA19E590FF00E99830 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				827A0F6119E6DBC000598E94 /* LRResty.framework */,
 				82E89B0719E5988700E99830 /* SBJson.framework */,
 				82E89B0519E5952300E99830 /* OgreKit.framework */,
 				82E89ADB19E590FF00E99830 /* Info.plist */,
@@ -452,6 +458,7 @@
 				82E89AEF19E590FF00E99830 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		82E89AF019E590FF00E99830 /* Build configuration list for PBXNativeTarget "MyAnimeListTests" */ = {
 			isa = XCConfigurationList;
@@ -460,6 +467,7 @@
 				82E89AF219E590FF00E99830 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
